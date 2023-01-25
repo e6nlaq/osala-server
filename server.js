@@ -1,10 +1,6 @@
 const http = require('http');
 const fs = require('fs');
 
-const hostname = '127.0.0.1';
-const port = 5008; // ここを変える
-let start_req = true;
-
 const scloudjs = require("scloudjs"); //scloudjsをモジュールとして使えるようにする
 const { start } = require('repl');
 let clouddatas = new Object();//このオブジェクトにクラウド変数のデータが入る
@@ -104,17 +100,3 @@ const func = async () => {//実行
     await scloudjs.handshake();//プロジェクトに接続
 };
 func();
-
-
-const server = http.createServer((req, res) => {
-    res.statusCode = 200;
-    res.setHeader('Content-Type', 'text/plain');
-    res.end('Port 5008: Codename Osala Main Server'); // ご自由に
-});
-
-server.listen(port, hostname, () => {
-    console.log("----------------------------------------------------------------")
-    console.log(`Port number ${port}.`);
-    console.log(`Server running at http://${hostname}:${port}/`);
-    console.log("----------------------------------------------------------------\n")
-});
